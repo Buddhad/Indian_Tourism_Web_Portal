@@ -28,12 +28,15 @@ h1{
 .logo{
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 .head{
  /* background-color: rgb(134, 134, 158); */
  margin-bottom: 20px;
 
+}
+.foot{
+    margin-top: 20px;
 }
 .para {
     white-space: nowrap;
@@ -50,8 +53,8 @@ h1{
     width: 100vw;
 
 
-    background: rgba(20, 96, 158, 0.712);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background:rgba(20, 96, 158, 0.712);
+    box-shadow: 0 8px 32px 0 rgba(226, 227, 229, 0.37);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
