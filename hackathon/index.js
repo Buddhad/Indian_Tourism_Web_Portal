@@ -22,8 +22,15 @@ var i=0;
         }
         window.onload=change;
 
+let readmore = document.getElementById('readmore')
 let para = document.getElementById('para')
-
-para.addEventListener('click',()=>{
-    para.classList.toggle('parachanged')
+readmore.addEventListener('click',()=>{
+    if(para.classList.contains("parachanged")){
+        readmore.innerHTML="Read More"
+        para.classList.remove("parachanged")
+    }
+    else{
+        para.classList.add("parachanged")
+        readmore.innerHTML="Read Less"
+    }
 })
