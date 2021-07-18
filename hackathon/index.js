@@ -3,9 +3,10 @@ var i=0;
         function change()
         {
             var arr=new Array();
-            arr[0]="https://source.unsplash.com/1920x1080/?india,monuments";
-            arr[1]="https://source.unsplash.com/1920x1080/?india,tourism";
-            arr[2]="https://source.unsplash.com/1920x1080/?india,kerela";
+            arr[0]="https://source.unsplash.com/2480x1080/?india,monuments";
+            arr[1]="https://source.unsplash.com/2480x1080/?india,tourism";
+            arr[2]="https://source.unsplash.com/2480x1080/?india,kerela";
+            
             if(i==arr.length)
             {
                 i=0;
@@ -20,3 +21,9 @@ var i=0;
             setTimeout("change()",2000);
         }
         window.onload=change;
+
+let para = document.getElementById('para')
+
+para.addEventListener('click',()=>{
+    para.classList.toggle('parachanged')
+})
