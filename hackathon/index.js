@@ -34,3 +34,27 @@ readmore.addEventListener('click',()=>{
         readmore.innerHTML="Read Less"
     }
 })
+
+
+function search(){
+    let mainitems=document.querySelector(".mainitems")
+    let search=document.querySelector(".search")
+    let head=document.querySelector(".head")
+    let foot=document.querySelector(".foot")
+    head.classList.add("hide")
+    foot.classList.add("hide")
+    mainitems.classList.add("hide")
+    search.classList.remove("hide")
+
+}
+
+function searchClose(){
+    let mainitems=document.querySelector(".mainitems")
+    let search=document.querySelector(".search")
+    let head=document.querySelector(".head")
+    let foot=document.querySelector(".foot")
+    head.classList.remove("hide")
+    foot.classList.remove("hide")
+    mainitems.classList.remove("hide")
+    search.classList.add("hide")
+}
