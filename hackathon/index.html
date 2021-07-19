@@ -10,6 +10,9 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css" rel="stylesheet" type="text/css" /> -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.10.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="./style.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
    
 </head>
 
@@ -31,12 +34,20 @@
 </header>
 
 <body>
-    <div class="search hide bg-blue-300 w-full h-100 p-5 rounded-2xl shadow-2xl">
-        <div class="flex flex-row justify-between">
-            <input type="text" placeholder="Search" class="w-2/3 p-2 rounded-2xl focus:outline-none">
+    <div class="search hide bg-blue-300 w-2/3 m-auto h-full p-5 rounded-2xl shadow-2xl relative flex flex-col item-center">
+        <div class="flex flex-row justify-between ">
+            <input type="text" placeholder="Search" class="w-2/3 p-4 rounded-2xl focus:outline-none" id="inputSearch" onkeypress="findCity(event)" onkeyup="storeCity(this)">
 
-            <button class="bg-blue-300 w-8 p-2" onclick="searchClose()">X</button>
+            <button class="bg-blue-300 w-8 p-2 text-4xl" id="btn_close" onclick="searchClose()"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg></button>
         </div>
+        <div class="flex items flex-col justify-evenly items-center inline-block rounded-2xl p-4 w-1/4 h-1/4 m-auto" id="cityPopulate">
+            
+        </div>
+        <div class="flex items flex-row justify-evenly items-center inline-block rounded-2xl p-4 w-full h-3/4 bg-yellow-200" id="listPopulate">
+        
+        </div> 
     </div>
     <div class="mainitems w-full h-full">
         <div class="container_f1">
@@ -178,7 +189,7 @@
                                     <h1 class="title-font text-lg font-medium text-white-900 mb-3">Meghalaya</h1>
                                     <p class="leading-relaxed mb-3">Meghalaya is a state in Northeast India. Meghalaya was formed by carving out two districts from the state of Assam: the United Khasi Hills and Jaintia Hills, and the Garo Hills on 21 January 1972.</p>
                                     <div class="flex items-center flex-wrap ">
-                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href="./Pages/Meghalaya.html">Learn More
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>
@@ -288,7 +299,7 @@
                                     <h1 class="title-font text-lg font-medium text-white-900 mb-3">West Bengal</h1>
                                     <p class="leading-relaxed mb-3">Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911.</p>
                                     <div class="flex items-center flex-wrap">
-                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href="./Pages/index.html">Learn More
+                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href="./Pages/Kolkata.html">Learn More
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>
@@ -398,7 +409,7 @@
                                     <h1 class="title-font text-lg font-medium text-white-900 mb-3">Rajasthan</h1>
                                     <p class="leading-relaxed mb-3">Rajasthan is a state located in northern India. The state covers an area of 342,239 square kilometres or 10.4 percent of the total geographical area of India. It is the seventh largest Indian state.</p>
                                     <div class="flex items-center flex-wrap ">
-                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href="./Pages/Rajasthan.html">Learn More
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>
@@ -434,7 +445,7 @@
                                     <h1 class="title-font text-lg font-medium text-white-900 mb-3">Delhi</h1>
                                     <p class="leading-relaxed mb-3">Delhi, India’s capital territory, is a massive metropolitan area in the country’s north. In Old Delhi, a neighborhood dating to the 1600s, stands the imposing Mughal-era Red Fort, a symbol of India.</p>
                                     <div class="flex items-center flex-wrap">
-                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" href="./Pages/Delhi.html">Learn More
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>
@@ -561,16 +572,16 @@
                       <label for="message" class="leading-7 text-sm text-white-600">Message</label>
                       <textarea id="message" name="message" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-white-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                     </div>
-                    <button type="submit" class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                    <button class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="contactUs()">Submit</button>
                 </form>
                 </div>
                 </div>
-              </section>
+              </section> 
     </div>
 </body>
 <script src="./index.js"></script>
-<script src="./validate.js">
-</script>
+<script src="./validate.js"></script>
+<script src="./searchCities.js"></script>
 <footer class="text-white-600 body-font foot">
     <div
         class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">

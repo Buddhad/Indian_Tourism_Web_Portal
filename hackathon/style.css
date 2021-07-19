@@ -33,13 +33,13 @@ h1{
 .hide{
     display: none;
 }
-.search{
+/* .search{
     position: absolute;
     margin-top: 0;
     width: 70vw;
     height: 50vh;
     margin:10px 15vw;
-}
+} */
 
 .logo{
     width: 50px;
@@ -73,4 +73,23 @@ h1{
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.up{
+    text-transform: capitalize;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+#desc{
+    font-size: 20px;
+}
+#no_desc{
+    font-size: 30px;
+    font-weight: bolder;
+}
+#city_list{
+    margin: 3px 3px;
+    text-decoration: underline;
+    padding: 2px;
+    font-size: 18px;
 }
